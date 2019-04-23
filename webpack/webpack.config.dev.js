@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -76,6 +77,11 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
+    }),
+    new StyleLintPlugin({
+      configFile: '.stylelintrc.json',
+      context: './src',
+      syntax: 'scss',
     }),
   ],
 };
