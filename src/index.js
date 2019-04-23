@@ -1,15 +1,13 @@
-import "./styles/main.scss";
+import './styles/main.scss'
 
-//import vue.js
-import Vue from "vue";
+import Vue from 'vue'
 
-//import main component
-import App from "./components/App.vue";
+import App from './components/App.vue'
 
-//render applications
+// eslint-disable-next-line no-new
 new Vue({
-  el: "#app",
+  el: '#app',
   render: h => h(App)
-});
+})
 
-console.log("webpack work");
+console.log('webpack work')
