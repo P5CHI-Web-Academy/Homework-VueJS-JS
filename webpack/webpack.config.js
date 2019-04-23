@@ -5,30 +5,46 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[chunkhash].js"
+  },
+  resolve: {
+    modules: ["node_modules", "public"]
+  },
+  devServer: {
+    open: true
   },
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: "vue-loader"
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.js$/,
-        loader: "babel-loader"
-      },
-      {
-        test: /\.scss$/,
+        test: /\.scss|sass$/,
         use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.(png|jpg|gif|jpeg)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 5000
+            }
+          }
+        ]
+      },
+      {
+        test: /\.vue$/,
+        use: "vue-loader"
       }
     ]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "./src/index.html"
-    }),
-    new VueLoaderPlugin()
+      template: path.resolve(__dirname, "../public/index.html")
+    })
   ]
 };
