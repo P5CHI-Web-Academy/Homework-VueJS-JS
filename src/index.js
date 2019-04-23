@@ -8,10 +8,10 @@ import App from './components/App.vue'
 
 Vue.use(Vuetify)
 
-//render applications
+// render applications
 new Vue({
-    el: '#app',
-    render: h => h(App)
+  el: '#app',
+  render: h => h(App)
 })
 
-console.log('test message');
+console.log('test message')
