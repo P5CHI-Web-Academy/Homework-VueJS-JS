@@ -1,5 +1,5 @@
 <template>
-  <div>
-    <h2>Hello World!</h2>
-  </div>
+  <footer class="containter__footer">
+    <span class="containter__footer-title">footer</span>
+  </footer>
 </template>
