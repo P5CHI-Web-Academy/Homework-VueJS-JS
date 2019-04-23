@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -9,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[hash].js',
   },
+  mode: 'development',
   resolve: {
     modules: ['node_modules', 'public'],
   },
@@ -35,7 +35,24 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif|jpeg)$/,
@@ -60,8 +77,4 @@ module.exports = {
       template: path.resolve(__dirname, '../public/index.html'),
     }),
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [new UglifyJsPlugin()],
-  },
 };
