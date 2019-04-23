@@ -8,8 +8,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js  --colors",
     "start": "webpack-dev-server --open --config webpack/webpack.config.js",
-    "lint": "./node_modules/.bin/eslint --ext .js,.vue src",
-    "lint:fix": "./node_modules/.bin/eslint --ext .js,.vue src --fix",
+    "lint": "./node_modules/.bin/eslint --ext $npm_package_config_files_js .",
+    "lint:fix": "./node_modules/.bin/eslint --ext $npm_package_config_files_js . --fix",
     "lint:html": "./node_modules/htmlhint/bin/htmlhint -c .htmlhintrc.json $npm_package_config_files_html",
     "prettyhtml:fix": "./node_modules/.bin/prettyhtml --sortAttributes $npm_package_config_files_html",
     "prettier:check": "./node_modules/.bin/prettier --config ./.prettierrc.json --list-different $npm_package_config_files",
@@ -21,7 +21,7 @@
   },
   "config": {
     "files": "{*.json,*.yml,./**/*{*.vue,.js,.ts,.json,.html,.scss}}",
-    "files_js": "{*.js,./**/*{*.vue,.js}}",
+    "files_js": ".js,.vue",
     "files_html": "./src/{*.html,**/*.html}",
     "files_scss": "./src/{*.scss,**/*.scss}"
   },
