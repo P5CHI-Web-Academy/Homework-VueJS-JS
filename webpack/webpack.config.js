@@ -34,12 +34,8 @@ module.exports = {
         loader: 'eslint-loader',
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
-      },
-      {
-        test: /\.scss|sass$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.(sa|sc|c)ss$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpg|gif|jpeg)$/,
