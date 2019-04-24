@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
 
@@ -16,6 +15,10 @@ module.exports = {
             'public',
         ]
     },
+    devServer:{
+        hot: true,
+        open:true
+    },
     module: {
         rules: [
             {
@@ -29,6 +32,11 @@ module.exports = {
                 }
             },
 
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "eslint-loader",
+            },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
@@ -50,7 +58,7 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                use: ['vue-loader']
+                use: ['vue-loader',"eslint-loader"]
             }
         ]
     },
@@ -61,9 +69,6 @@ module.exports = {
         }),
     ],
     optimization: {
-        minimize: true,
-        minimizer: [
-            new UglifyJsPlugin()
-        ]
+        minimize: false
     }
 };
