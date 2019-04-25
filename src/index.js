@@ -1,3 +1,12 @@
-import './assets/styles/main.scss'
+import 'vuetify/dist/vuetify.min.css'
+// import './assets/styles/main.scss';
+import Vue from 'vue';
+import Vuetify from 'vuetify';
+import App from './components/App.vue';
 
-console.log('Hello World! Webpack is configured!');
+Vue.use(Vuetify);
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
