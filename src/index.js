@@ -6,6 +6,8 @@ import Vuetify from 'vuetify'
 
 import App from './components/App.vue'
 
+import { fib30, curryingSumWithClosingBrackets, curryingSumWithoutClosingBrackets } from './components/homework'
+
 Vue.use(Vuetify)
 
 // render applications
@@ -14,4 +16,8 @@ new Vue({
   render: h => h(App)
 })
 
-console.log('test message')
+console.log('30 Fibonacci numbers: ')
+console.log(fib30())
+
+console.log('curryingSumWithClosingBrackets(1)(2)(3)(4)() = ' + curryingSumWithClosingBrackets(1)(2)(3)(4)())
+console.log('curryingSumWithoutClosingBrackets(1)(2)(3)(4) = ' + curryingSumWithoutClosingBrackets(1)(2)(3)(4))
