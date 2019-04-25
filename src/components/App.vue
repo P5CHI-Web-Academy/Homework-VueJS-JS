@@ -1,12 +1,8 @@
 <template>
   <div class="example">
-    <p class="example__title">
-      {{ msg }}
-    </p>
-    <img
-      :src="image"
-      class="example__image"
-    >
+    <p class="example__title">{{ msg }}</p>
+    <img :src="image" class="example__image">
+    <fibonacci></fibonacci>
   </div>
 </template>
 
