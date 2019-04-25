@@ -5,29 +5,60 @@
   "repository": "https://github.com/P5CHI-Web-Academy/Homework-VueJS-JS.git",
   "author": "Cristian Cazacu <vladislav.tornea@gmail.com>",
   "license": "MIT",
+  "config": {
+    "files_js": "./src/**/*.{js,vue}",
+    "files_style": "./src/**/*.{scss,vue}"
+  },
   "scripts": {
-    "watch": "webpack --watch",
-    "start": "webpack-dev-server --open",
-    "build": "webpack"
+    "start": "webpack-dev-server --mode development --open",
+    "build:dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build:prod": "cross-env NODE_ENV=production webpack --mode production",
+    "eslint": "./node_modules/.bin/eslint $npm_package_config_files_js",
+    "eslint:fix": "./node_modules/.bin/eslint $npm_package_config_files_js --fix",
+    "stylelint": "./node_modules/.bin/stylelint $npm_package_config_files_style",
+    "stylelint:fix": "./node_modules/.bin/stylelint $npm_package_config_files_style --fix",
+    "lint": "./node_modules/.bin/run-s eslint stylelint",
+    "lint:fix": "./node_modules/.bin/run-s eslint:fix stylelint:fix"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
+    "@starlab/stylelint-config": "^1.0.5",
+    "autoprefixer": "^9.5.1",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.1",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "stylelint": "^10.0.1",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "terser-webpack-plugin": "^1.2.3",
+    "url-loader": "^1.1.2",
     "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "vue": "^2.6.10",
     "webpack-hashed-module-id-plugin": "^0.1.4"
   }
 }

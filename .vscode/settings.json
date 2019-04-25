@@ -1,0 +1,7 @@
+{
+  "path-intellisense.mappings": {
+    "@image": "${workspaceRoot}/src/assets/images",
+    "@style": "${workspaceRoot}/src/assets/styles",
+    "@component": "${workspaceRoot}/src/components"
+  }
+}
