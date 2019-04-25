@@ -10,8 +10,9 @@ import Vuetify from 'vuetify'
 // import main component
 import App from './components/App.vue'
 
-// import weirdsum functions
+// import weirdsum and fibonacci functions
 import { weirdsum1, weirdsum2 } from './weirdsums.js'
+import { fibonacci } from './fibonacci.js'
 
 Vue.use(Vuetify)
 
@@ -24,3 +25,11 @@ new Vue({
 
 console.log(weirdsum1(1)(2)(3)(4)())
 console.log(weirdsum2(5)(6)(7)(8))
+
+const fibonacciArray = []
+
+for (let i = 0; i < 30; i++) {
+  fibonacciArray.push(fibonacci(i))
+}
+
+console.log(fibonacciArray)
