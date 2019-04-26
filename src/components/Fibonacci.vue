@@ -13,35 +13,39 @@ export default {
     return {
       fibonacciElementsLenght: 9,
       colors: ['#233D4D', '#FE7F2D', '#FCCA46', '#A1C181', '#579C87'],
-      colorPosition: 0,
-      direction: ['horizontal', 'vertical'],
+      colorPos: 0,
+      direction: [
+        'vertical',
+        'horizontal',
+        'vertical-reverse',
+        'horizontal-reverse',
+      ],
     }
   },
   methods: {
     drawFibonacci: function(n) {
       // create first fibonacci element
-      let element = this.createNewElement('1')
+      let element = this.createNewElement(1)
 
       // get fibonaccie sequence
       const fibonacciArray = fibonacci(n)
       // remove first element from sequence
       fibonacciArray.shift()
-      fibonacciArray.shift()
 
       // create rest of fibonacci elements
-      let step = 4
-      fibonacciArray.forEach((number, index) => {
+      fibonacciArray.forEach((number, i) => {
+        // skip the first element because it was created above.
+        if (i === 0) return
+
         const divCurrent = this.createNewElement(number)
 
-        const divContainer = document.createElement('div')
-        divContainer.className = `fibonacci--${this.direction[index & 1]}`
+        const elementTemp = document.createElement('div')
+        elementTemp.className = `fibonacci--${this.direction[i % 4]}`
 
-        divContainer.appendChild(step < 3 ? divCurrent : element)
-        divContainer.appendChild(step < 3 ? element : divCurrent)
+        elementTemp.appendChild(element)
+        elementTemp.appendChild(divCurrent)
 
-        element = divContainer
-
-        step = step === 4 ? 1 : step + 1
+        element = elementTemp
       })
 
       return element
@@ -68,13 +72,10 @@ export default {
       return element
     },
     getColor() {
-      const tempColorPosition = this.colorPosition
-      this.colorPosition =
-        this.colorPosition === this.colors.length - 1
-          ? 0
-          : this.colorPosition + 1
+      const tempColorPos = this.colorPos
+      this.colorPos += this.colorPos === this.colors.length - 1 ? -4 : 1
 
-      return this.colors[tempColorPosition]
+      return this.colors[tempColorPos]
     },
   },
   mounted() {
@@ -130,9 +131,19 @@ document.body.appendChild
     display: flex;
   }
 
+  &--horizontal-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
   &--vertical {
     display: flex;
     flex-direction: column;
+  }
+
+  &--vertical-reverse {
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   &__element {
