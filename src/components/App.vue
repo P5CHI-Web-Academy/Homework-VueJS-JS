@@ -51,15 +51,15 @@
 </template>
 
 <script>
-import img1 from 'img/1.jpg'
-import img2 from 'img/2.jpg'
-import img3 from 'img/3.jpeg'
-import img4 from 'img/4.jpeg'
-import img5 from 'img/5.jpeg'
-import img6 from 'img/6.jpeg'
-import img7 from 'img/7.jpeg'
-import img8 from 'img/8.jpeg'
-import img9 from 'img/9.png'
+import img1 from '../../public/img/1.jpg'
+import img2 from '../../public/img/2.jpg'
+import img3 from '../../public/img/3.jpg'
+import img4 from '../../public/img/4.jpg'
+import img5 from '../../public/img/5.jpg'
+import img6 from '../../public/img/6.jpg'
+import img7 from '../../public/img/7.jpg'
+import img8 from '../../public/img/8.jpg'
+import img9 from '../../public/img/9.png'
 export default {
   data: () => ({
     drawer: false,
