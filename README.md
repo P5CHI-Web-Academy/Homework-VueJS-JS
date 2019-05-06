@@ -4,9 +4,9 @@
 
 Init Project
 
-'''sh
+```sh
     yarn init -y
-'''
+```
 
 ## Webpack
 
