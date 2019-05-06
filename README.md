@@ -10,12 +10,12 @@ Init Project
 
 ## Webpack
 
-'''sh
+```sh
     yarn add webpack webpack-cli
-'''
+```
 
 ## Webpack Dev Server
 
-'''sh
+```sh
     yarn add webpack-dev-server  html-webpack-plugin
-'''
+```
