@@ -7,7 +7,57 @@
                 clipped
                 app
         >
+          <v-list dense>
+            <v-list-tile @click.stop="right = !right">
+              <v-list-tile-action>
+                <v-icon>exit_to_app</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Open Temporary Drawer</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
         </v-navigation-drawer>
+        <v-toolbar
+          color="blue-grey"
+          dark
+          fixed
+          app
+          clipped-right
+        >
+          <v-toolbar-side-icon @click.stop="drawer = !drawer" />
+          <v-toolbar-title>Toolbar</v-toolbar-title>
+          <v-spacer />
+          <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight" />
+          </v-toolbar>
+          <v-navigation-drawer
+            v-model="drawer"
+            fixed
+            app
+          >
+          <v-list dense>
+            <v-list-tile @click.stop="left = !left">
+              <v-list-tile-action>
+                <v-icon>exit_to_app</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Open Temporary Drawer</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-navigation-drawer>
+    <v-navigation-drawer
+      v-model="left"
+      temporary
+      fixed
+    />
+    <v-content>
+      <v-layout center>
+        <v-flex
+          sm10
+          offset-sm1
+          mt-5
+        >
           <v-card>
             <v-card-actions>
               <v-spacer />
@@ -41,12 +91,9 @@
              </v-layout>
            </v-container>
         </v-card>
-        <v-navigation-drawer
-                v-model="right"
-                right
-                temporary
-                fixed
-        ></v-navigation-drawer>
+      </v-flex>
+    </v-layout>
+    </v-content>
     </v-app>
 </template>
 
@@ -62,9 +109,9 @@ import img8 from '../../public/img/8.jpg'
 import img9 from '../../public/img/9.png'
 export default {
   data: () => ({
-    drawer: false,
-    drawerRight: false,
-    right: true,
+    drawer: null,
+    drawerRight: null,
+    right: false,
     left: false,
     size: 'sm',
     images: [
