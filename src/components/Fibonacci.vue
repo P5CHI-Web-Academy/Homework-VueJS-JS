@@ -1,6 +1,5 @@
 <template>
   <div class="wrap">
-    <input v-model="fibonacciElementsLenght" class="count" placeholder="edit me">
     <div id="fibonacci" class="fibonacci"></div>
   </div>
 </template>
@@ -9,6 +8,12 @@
 import fibonacci from '../helpers/fibonacci.js'
 
 export default {
+  props: {
+    numberOfElements: {
+      type: Number,
+      default: 9,
+    },
+  },
   data() {
     return {
       fibonacciElementsLenght: 9,
@@ -61,9 +66,9 @@ export default {
       element.style.backgroundColor = this.getColor()
 
       // set element size
-      element.style.width = number * 10
-      element.style.height = number * 10
-      element.style.fontSize = number * 7
+      element.style.width = `${number * 10}px`
+      element.style.height = `${number * 10}px`
+      element.style.fontSize = `${number * 7}px`
 
       // add number in element
       const t = document.createTextNode(number)
@@ -81,23 +86,23 @@ export default {
   mounted() {
     document
       .getElementById('fibonacci')
-      .appendChild(this.drawFibonacci(this.fibonacciElementsLenght))
+      .appendChild(this.drawFibonacci(this.numberOfElements))
   },
-  updated() {
-    if (!(this.fibonacciElementsLenght >= 1)) return
+  watch: {
+    numberOfElements: function(newVal) {
+      if (!(this.numberOfElements >= 1)) return
 
-    const fibonacciContainer = document.getElementById('fibonacci')
+      const fibonacciContainer = document.getElementById('fibonacci')
 
-    // remove inside fibonacci container
-    fibonacciContainer.innerHTML = ''
+      // remove inside fibonacci container
+      fibonacciContainer.innerHTML = ''
 
-    // reset colors
-    this.colorPosition = 0
+      // reset colors
+      this.colorPosition = 0
 
-    // add fibonacci elements
-    fibonacciContainer.appendChild(
-      this.drawFibonacci(this.fibonacciElementsLenght),
-    )
+      // add fibonacci elements
+      fibonacciContainer.appendChild(this.drawFibonacci(this.numberOfElements))
+    },
   },
 }
 
@@ -110,18 +115,6 @@ document.body.appendChild
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.count {
-  width: 250px;
-  padding: 7px 10px;
-  margin: 20px;
-  color: #fff;
-  background-color: #243d4c;
-  border: 0;
-  border-radius: 5px;
-  outline: none;
-  box-shadow: 0 8px 7px -8px #fe7f2d;
 }
 
 .fibonacci {

@@ -2,6 +2,7 @@
   <div class="example">
     <p class="example__title">{{ msg }}</p>
     <img :src="image" class="example__image">
+    <my-input></my-input>
     <fibonacci></fibonacci>
   </div>
 </template>
