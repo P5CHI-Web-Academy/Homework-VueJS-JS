@@ -18,15 +18,21 @@
     "stylelint": "./node_modules/.bin/stylelint $npm_package_config_files_style",
     "stylelint:fix": "./node_modules/.bin/stylelint $npm_package_config_files_style --fix",
     "lint": "./node_modules/.bin/run-s eslint stylelint",
-    "lint:fix": "./node_modules/.bin/run-s eslint:fix stylelint:fix"
+    "lint:fix": "./node_modules/.bin/run-s eslint:fix stylelint:fix",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@starlab/stylelint-config": "^1.0.5",
+    "@storybook/addon-knobs": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/vue": "^5.0.11",
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "babel-preset-vue": "^2.0.2",
     "clean-webpack-plugin": "^2.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
