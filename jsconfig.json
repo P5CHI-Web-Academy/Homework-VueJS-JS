@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "baseUrl": ".",
+    "paths": {
+      "@style": ["/src/assets/styles/*"],
+      "@image": ["/src/assets/images/*"],
+      "@component": ["/src/components/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
